@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selector 2</title>
+
+  <style>
+    /* 내부 스타일 시트 */
+    ul {
+      list-style: none;
+    }
+
+    * {
+      margin: 0;
+    }
+
+    p {
+      font-style: italic;
+    }
+
+    li {
+      margin: 20px 0;
+    }
+
+    .myheader1 {
+      font-size: xx-large;
+      color: crimson;
+    }
+
+    #myheader2 {
+      color: blue;
+      font-weight: 700;
+    }
+
+    #container {
+      width: 500px;
+      margin: 10px auto;
+      padding: 10px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS 기본 선택자</h1>
+  <ul>
+    <li>
+      <h3>전체 선택자 : *</h3>
+      <img src="./images6/cat.jpg" alt="Cat" />
+      <!-- 인라인 스타일 -->
+      <p>고양이는 <span style="color: blueviolet; font-style:normal;">조심성</span>이 많은 동물이다.</p>
+    </li>
+    <li>
+      <h3>클래스 선택자 : .</h3>
+      <p class="myheader1">클래스를 적용해보자.</p>
+      <span class="myheader1">모든 요소에 적용 가능하다.</span>
+    </li>
+    <li>
+      <h3>아이디 선택자 : #</h3>
+      <p id="myheader2">아이디 속성 사용해보자.</p>
+      <p id="myheader2">화면에 출력되는 데에는 중복 id 문제 없음</p>
+      <span id="myheader2" style="color: blueviolet; font-style:normal; font-weight: 400;">js로 요소를 선택할 때 문제가 생김</span>
+    
+      <div id="container">
+        <h1>레드향</h1>
+        <p>껍질에 붉은 빛이 돌아 레드향이라 불린다.</p>
+        <p>레드향은 한라봉과 귤을 교배한 것으로 일반 귤보다 2~3배 크고, 과육이 붉고 통통하다.</p>
+        <p>비타민 C와 비타민 P가 풍부해 혈액순환, 감기예방 등에 좋은 것으로 알려져 있다.</p>
+    
+    </li>    
+  </ul>
+
+  <ul id="divspan">
+    <li>div : block 요소</li>
+    <li>span : inline 요소</li>
+  </ul>
+
+  <h2>스타일 우선순위</h2>
+  <ol id="order">
+    <li>!important
+      - 어떤 스타일보다 우선 적용하는 스타일
+      - 특별한 경우를 제외하고는 잘 안씀..</li>
+    <li>인라인 스타일
+      - 태그 안에 style 속성을 사용해 해당 태그만 스타일 적용
+    </li>
+    <li>id 스타일
+      - 지정한 부분에만 적용되는 스타일이지만 한 문서에 한 번만 적용할 수 있음
+    </li>
+    <li>클래스 스타일
+      - 웹 문서에서 지정한 부분에만 적용되는 스타일로 한 문서에 여러 번 적용할 수 있음
+    </li>
+    <li>타입 스타일
+      - 웹 문서에 사용한 특정 태그에 스타일을 똑같이 적용
+    </li>
+  </ol>
+</body>
+</html>

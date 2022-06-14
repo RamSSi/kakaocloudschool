@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selector</title>
+  <title>Selector 1</title>
+
+  <link rel="stylesheet" href="./style.css">
   <style>
     p {
       color: red;
@@ -12,12 +14,53 @@
       background-color: rgb(60, 181, 186);
     }
 
-    h1, h2 {
+    #css h1, h2 {
+      font-size: 16px;
       color: darkblue;
+    }
+
+    #css h3 {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    ul {
+      border: 1px solid lightgray;
+      list-style: none;
+    }
+
+    #padding div {
+      padding: 10px 2px;
     }
   </style>
 </head>
 <body>
-  
+  <h1>스타일 시트</h1>
+  <ul id="css">
+    <li>
+      <h3>브라우저 기본 스타일</h3>
+      <p></p>
+    </li>
+    <li>
+      <h3>인라인 스타일</h3>
+      <p></p>
+    </li>
+    <li>
+      <h3>내부 스타일 시트</h3>
+    </li>
+    <li>
+      <h3>외부 스타일 시트</h3>
+    </li>
+  </ul>
+
+  <h1>Padding</h1>
+  <ul id="padding">
+    <li>
+      <div>ex. padding: 10px 2px 10px 2px;</div>
+      <div>top right bottom left</div>
+      <div>ex. padding: 10px 2px;</div>
+      <div>top, bottom / left, right</div>
+    </li>
+  </ul>
 </body>
 </html>

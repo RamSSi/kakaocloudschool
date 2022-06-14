@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 id="header1">이 부분의 텍스트를 바꿔봅시다.</h1>
+  <h3 id="header3">이벤트 발생</h3>
+  <style>
+    h3 {
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    document.getElementsByTagName("h1")[0].innerHTML = "자바스크립트";
+    console.log(document.getElementsByTagName("h1")[0]);
+    console.log(document.querySelector("h1"));
+    document.querySelector("h1").innerHTML = "끝";
+
+    document.getElementById("header3").onclick = function() {
+      // 함수의 표현식 : onclick 이벤트가 발생했을 때 호출할 콜백함수를 전달한다.
+      alert("클릭 이벤트 발생");
+      // 일회성으로 사용하기 위한 함수 : 사용한 후 메모리에서 사라짐
+    }
+
+    const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    console.log(arr.filter( x => x % 2 === 1 ));
+    console.log(arr.filter( x => x % 2 === 0 ));
+  </script>
+</body>
+</html>
