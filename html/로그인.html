@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <!-- action을 지정하지 않으면 현재 문서를 다시 부름 -->
+  <!-- ?name1=value1&name2=value2 -->
+  <form action="" >
+    <fieldset>
+      <legend>로그인</legend>
+      <label for="userid">아이디
+        <input type="text" name="userid" size="10" />
+      </label>
+      <label for="password">패스워드
+        <input type="text" name="password" size="10" />
+      </label>
+
+
+      <input type="submit" value="login">
+      <button>로그인</button>
+      <input type="button" value="button">
+      <button type="button">로그인</button>
+    </fieldset>
+
+    <fieldset style="margin-top: 30px;">
+      <legend>배송정보</legend>
+      <ul>
+        <li>
+          <label for="username">이름 
+            <input type="text" name="username" id="username">
+          </label>
+        </li>
+        <li>
+          <label for="address">주소 
+            <input type="text" name="address" id="address">
+          </label>
+        </li>
+        <li>
+          <label for="email">이메일 
+            <input type="text" name="email" id="email">
+          </label>
+        </li>
+        <li>
+          <label for="phone">연락처 
+            <input type="text" name="phone" id="phone">
+          </label>
+        </li>
+      </ul>
+    </fieldset>
+
+    
+    <fieldset style="margin-top: 30px;">
+      <legend>상품선택</legend>
+      <div>
+        <p>주문할 상품을 선택하세요.</p>
+        <label for="check1">
+          <input type="checkbox" value="m1" name="product" disabled checked id="check1">
+          선물용 3kg
+        </label>
+        <label for="check2">
+          <input type="checkbox" value="m2" name="product" checked id="check2">
+          선물용 3kg
+        </label>
+        <label for="check3">
+          <input type="checkbox" value="m3" name="product" disabled id="check3">
+          가정용 3kg
+        </label>
+        <label for="check4">
+          <input type="checkbox" value="m4" name="product" id="check4">
+          가정용 5kg
+        </label>
+      </div>
+
+      <div>
+        <p>포장 선택</p>
+        <label for="gift1">
+          <input type="radio" value="1" name="gift" check id="gift1" />선물포장
+        </label>
+        <label for="gift1">
+          <input type="radio" value="2" name="gift" check id="gift2" />선물포장 X
+        </label>
+      </div>
+      
+    </fieldset>
+  </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input 1</title>
+</head>
+<body>
+  <form action="">
+    <h1>날짜 지정하기</h1>
+    <input type="date" name="date1" id="date1" value="2022-06-14" /> 
+    <!-- value : 값을 지정할 수 있음 -->
+    <input type="month" name="month" id="month"/>
+    <input type="week" name="week" id="week"/>
+    <button>보내기</button>
+
+    <br />
+    <input type="image" src="./images5/login.png" alt="로그인" />
+
+    <br />
+    <input type="button" value="공지 창 열기" onclick="window.open('링크1.html')" />
+  
+    <input type="file" />
+    <!-- input:file은 post로 전송해야 함 -->
+
+    <input type="hidden" name="이름" value="서버로 넘길 값">
+    <!-- input:hidden 임시로 정보 저장할 때 사용, name 속성이 꼭 필요 -->
+  </form>
+</body>
+</html>
