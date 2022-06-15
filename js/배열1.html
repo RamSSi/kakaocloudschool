@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+  let arr = [1, 2, 3, 4, 5];
+
+  arr.push(6);
+  arr.push(7);
+  arr.push(8);
+  arr.push(9);
+  arr.push(10);
+
+  console.log(arr); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  let words = Array();
+  words.push("rose", "lily", "pineapple", "berry");
+  console.log(words); // ['rose', 'lily', 'pineapple', 'berry']
+
+  words = words.concat("milk", "president", "survey", "like");
+  console.log(words); // ['rose', 'lily', 'pineapple', 'berry', 'milk', 'president', 'survey', 'like']
+
+  let s = words.join(" ");  // 배열요소를 하나로 묶을 때 사용 (배열이 아닌 문자열로 만들어 줌)
+  console.log(s); // rose lily pineapple berry milk president survey like
+</script>

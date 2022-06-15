@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alert & Confirm & Prompt 3</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+  var x = prompt("X = ", 0);
+  var y = prompt("Y = ", 0);
+
+  alert(x + y);   // prompt의 경우 문자열이 입력되기 때문에 X+Y의 결과도 문자의 합이 됨
+  alert(parseInt(x) + parseInt(y)); // parseInt로 문자를 정수형으로 변환한 후 연산하여 출력
+</script>
