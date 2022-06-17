@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  // pre = arr[0] = 9, curr = arr[1] = 2
+  let arr = [9, 2, 8, 5, 7];
+  let sum = arr.reduce((pre, curr, index) => {
+    console.log(pre, curr, index);
+    return pre + curr;
+  });
+  console.log(sum);
+
+  // pre 인자에 0을 부여
+  sum = arr.reduce((pre, curr) => {
+    console.log(pre, curr);
+    return pre + curr;
+  }, 0);
+  console.log(sum);
+
+  // 짝수의 개수 세기
+  cnt = arr.reduce((pre, curr) => {
+    if (curr % 2 === 0) return pre + 1;
+    else return pre;
+  }, 0);
+
+  console.log(cnt);
+
+  let words = ["school", "rain", "rainbow", "sales", "marketing"];
+
+  temp = words.reduce((pre, curr) => {
+    return pre + " " + curr;
+  });
+
+  console.log(temp);
+</script>

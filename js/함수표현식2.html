@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function Expression 2</title>
+  
+  <script>
+    // window.onload : html 문서가 모두 메모리에 로딩된 후에 발생하는 이벤트이다.
+    // 이벤트가 발생했을 때 함수를 호출하는 방법
+    
+    // 1) 함수 표현식을 사용
+    window.onload = function () {
+      document.getElementById("xvalue").value = 100;
+    }
+
+    // 2) 함수 선언문을 사용
+    function onLoad() { document.getElementById("xvalue").value = 1000; }
+    window.onload = onLoad;
+
+    // 3) 화살표 함수 : 함수 내부에서 this 사용 불가
+    window.onload = () => document.getElementById("xvalue").value = 10000;
+  </script>
+</head>
+<body>
+  <input type="text" name="" id="xvalue">
+</body>
+</html>

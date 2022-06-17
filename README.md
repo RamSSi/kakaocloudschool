@@ -277,7 +277,7 @@ js로 요소를 선택할 때 문제가 생김
 ```
 document.writ();
 ```
-<img src="./js/images/error.jpg" alt="console debug"> 
+<img src="./js/src/images/error.jpg" alt="console debug"> <br>
 자바스크립트 에러가 콘솔 창에 출력됨
   
 
@@ -542,3 +542,157 @@ personList.forEach(person =>
  console.log(`${person.name} ${person.age}
   ${person.address} ${person.phone}`));
 ```
+
+<br /><br /><br />
+
+-----
+-----
+-----
+
+<br /><br /><br />
+
+2022. 6. 17
+
+# JS
+
+## 함수 표현식
+- 함수 선언(문) 방식으로 함수를 생성하면, 함수가 독립된 구문 형태로 존재
+- 함수 표현식 방식으로 함수를 생성하면, 함수가 표현식의 일부로 존재 (쓰고 버리는 일회용 함수) -> 함수가 선언된 라인에서 메모리가 할당되고 함수가 끝나면 메모리에서 사라짐
+
+<br><br>
+
+## 콜백 함수 : 함수에 인자로 전달하기 위한 함수
+자바스크립트는 비동기 모드를 지원함
+- 함수 작성자와 호출자가 다르다. 함수의 주소를 매개변수로 전달할 수 있고 콜백함수는 전달받은 함수에 의해 호출된다.
+- 보통 이벤트 핸들러나 Ajax, 네트워크 처리 등 시스템에 의해 부분적인 일처리가 필요할 때 많이 사용된다.
+- 특히 자바스크립트의 경우 비동기 I/O 방식을 기본으로 사용하기 때문에 시스템에 의해서 호출될 콜백함수를 많이 만든다.
+
+### 비동기 처리
+- 보통의 함수처럼 하나의 task를 처리한 후 다음 task를 처리하는 것이 아닌 함수값을 리턴한 후 백그라운드에서 시스템이 task 처리를 수행함
+- 백그라운드에서 task를 처리하다가 완료된 시점에 콜백 함수로 완료되었음을 알림
+- 콜백 함수를 만들어 콜백 함수의 주소를 전달하면 시스템이 호출
+- 콜백 함수가 굳이 함수의 선언문 형태로 있을 필요는 없음
+- 함수의 표현식 또는 화살표 함수로 전달된다.
+
+<br><br>
+
+## window.onload
+ : html 문서가 모두 메모리에 로딩된 후에 발생하는 이벤트이다.
+### 이벤트가 발생했을 때 함수를 호출하는 방법
+<ol>    
+<li>
+함수 표현식을 사용
+
+```
+window.onload = function () {
+  document.getElementById("xvalue").value = 100;
+}
+```
+</li>
+<li>
+함수 선언문을 사용
+
+```
+function onLoad() { document.getElementById("xvalue").value = 1000; }
+window.onload = onLoad;
+```
+</li>
+<li>
+화살표 함수 : 함수 내부에서 this 사용 불가
+
+```
+window.onload = () => document.getElementById("xvalue").value = 10000;
+```
+</li>
+</ol>
+
+<br><br>
+
+## filter + 콜백 함수
+  let arr = [3, 2, 1, 4, 7, 8, 9, 11, 12, 19, 16];
+
+  function odd(x) { return x % 2 === 1; }
+  let result = arr.filter(odd);
+  console.log(result);
+
+  console.log(arr.filter( function (x) { return x % 2 === 1}));
+  console.log(arr.filter( x => { return x % 2 === 1} ));
+  console.log(arr.filter( x => x % 2 === 1 ));
+
+<br><br>
+
+## 화살표 함수
+- 람다함수, 함수 선언식보다 간결하게 함수를 만들 수 있는데 이걸 화살표 함수라고 한다.
+- 함수 표현식에서 function 키워드를 생략하고 () => {} 형태의 함수를 만들 수 있다.
+- 표현이 간결하고 사용이 편해서 많은 라이브러리들이 사용하고 있다.
+
+<br><br>
+
+## Array 메서드
+### .map()
+: 리스트 내 모든 원소의 특정 연산 수행 
+
+### .find()
+: 특정 원소 1개를 찾아냄 (filter는 특정 조건을 성립하는 원소 모두 추출)
+
+### .reduce()
+: 누적 연산
+
+<br><br>
+
+## Array 예제
+
+```
+let numArray = [10, 20, 3, -5, 7, -1, 9, 12, 13, -4, 6];
+  
+let wordArray = [
+  "school", "hospital", "assembly", "compile", "default",
+  "constructor", "desk", "object", "class", "function",
+  "procedure", "alt", "bread", "milk"
+];
+
+let stuArray = [
+{"class": "1", "name": "A", "kor": 90, "eng": 90, "mat": 90},
+{"class": "2", "name": "A", "kor": 80, "eng": 60, "mat": 80},
+{"class": "2", "name": "A", "kor": 70, "eng": 70, "mat": 90},
+{"class": "1", "name": "A", "kor": 100, "eng": 90, "mat": 90},
+{"class": "2", "name": "A", "kor": 95, "eng": 80, "mat": 100},
+{"class": "1", "name": "A", "kor": 75, "eng": 60, "mat": 60}
+];
+```
+
+문 1. numArray에서 음수만 찾아내기
+```
+let numResult = numArray.filter(num => num < 0);
+console.log(numResult);
+```
+
+문 2. wordArray에서 단어 길이가 6글자 이상인 것만 추출하기
+```
+let wordResult = wordArray.filter(word => word.length >= 6);
+console.log(wordResult);
+```
+
+문 3. class가 1인 학생들과 2인 학생들 분리하기
+```
+let stuResult1 = stuArray.filter(stu => stu["class"] === "1")
+console.log("Class 1 : ", stuResult1);
+let stuResult2 = stuArray.filter(stu => stu["class"] === "2")
+console.log("Class 2 : ", stuResult2);
+```
+
+문 4. stuArray에 총점과 평균 계산하여 넣기
+```
+let stuResult3 = stuArray.map(stu => {
+  stu["sum"] = stu["kor"] + stu["eng"] + stu["mat"];
+  stu["avg"] = stu["sum"] / 3;
+  return stu;
+})
+console.log(stuResult3);
+```
+
+## Promise
+### async와 await
+- function 앞에  async를 붙이면 해당 함수는 항상 프라미스를 반환한다.
+- 프라미스가 아닌 값을 반환하더라도 이행 상태의 프라미스로 감싸 이행된 프라미스가 반환되도록 한다.
+- 자바스크립트는 await 키워드를 만나면 프라미스가 처리(settled)될 때까지 기다린다.

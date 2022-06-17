@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrow Function 2</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+  let numArray = [10, 20, 3, -5, 7, -1, 9, 12, 13, -4, 6];
+  
+  let wordArray = [
+    "school", "hospital", "assembly", "compile", "default",
+    "constructor", "desk", "object", "class", "function",
+    "procedure", "alt", "bread", "milk"
+  ];
+
+  let stuArray = [
+  {"class": "1", "name": "A", "kor": 90, "eng": 90, "mat": 90},
+  {"class": "2", "name": "A", "kor": 80, "eng": 60, "mat": 80},
+  {"class": "2", "name": "A", "kor": 70, "eng": 70, "mat": 90},
+  {"class": "1", "name": "A", "kor": 100, "eng": 90, "mat": 90},
+  {"class": "2", "name": "A", "kor": 95, "eng": 80, "mat": 100},
+  {"class": "1", "name": "A", "kor": 75, "eng": 60, "mat": 60}
+  ];
+
+
+  // 문 1. numArray에서 음수만 찾아내기
+  let numResult = numArray.filter(num => num < 0);
+  console.log(numResult);
+
+  // 문 2. wordArray에서 단어 길이가 6글자 이상인 것만 추출하기
+  let wordResult = wordArray.filter(word => word.length >= 6);
+  console.log(wordResult);
+
+  // 문 3. class가 1인 학생들과 2인 학생들 분리하기
+  let stuResult1 = stuArray.filter(stu => stu["class"] === "1")
+  console.log("Class 1 : ", stuResult1);
+  let stuResult2 = stuArray.filter(stu => stu["class"] === "2")
+  console.log("Class 2 : ", stuResult2);
+
+  // 문 4. stuArray에 총점과 평균 계산하여 넣기
+  let stuResult3 = stuArray.map(stu => {
+    stu["sum"] = stu["kor"] + stu["eng"] + stu["mat"];
+    stu["avg"] = stu["sum"] / 3;
+    return stu;
+  })
+  console.log(stuResult3);
+
+  numArray
+    .filter(a => a < 0)
+    .forEach(a => console.log(a));
+
+  wordArray
+    .filter(word => word.length >= 6)
+    .map(word => word.toUpperCase())
+    .forEach(word => console.log(word));
+
+  // map() 은 원본을 변화시키지 않고 새로운 Array를 반환함
+  let temp = numArray.map(num => num*num);
+  console.log(numArray);
+  console.log(temp);
+
+
+  // sort : 원본을 바꿈
+
+  console.log("원본:", numArray);
+  numArray.sort((a, b) => { return b - a;}) // 내림차순
+  console.log("정렬:", numArray);
+
+  stuArray.sort((a, b) => {console.log(a.sum - b.sum);})  // 오름차순
+  console.log(stuArray);
+
+  stuArray.sort((a, b) => {console.log(b.sum - a.sum)})  // 내림차순
+  console.log(stuArray);
+
+  let temp1 = numArray.map((object, i) => {
+    console.log(object, i);
+    return object;
+  })
+  console.log(temp1);
+
+
+  let arr2D = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12]
+  ];
+  
+  arr2D.forEach((arr, index) => console.log(arr, index));
+  // [1, 2, 3, 4] 0
+  // [5, 6, 7, 8] 1
+  // [9, 10, 11, 12] 2
+
+  arr2D.forEach((arr, index1) => {
+    arr.forEach((item, index2) => {
+      console.log(`arr2D[${index1}][${index2}]`, item);
+    });
+  });
+
+  // 첫 번째 1차원 배열에 2를 곱하고,
+  // 두 번째 1차원 배열은 3을 곱하고,
+  // 세 번째는 4를 곱한다.
+
+  let arr2D_mul = arr2D.map((arr, index) => arr.map(ele => ele * (index + 2)))
+
+  console.log(arr2D_mul);
+
+  // 첫 번째 찾은 데이터 하나만 반환한다.
+  result = numArray.find(x => x % 2 === 0);
+  console.log(result, typeof result)
+
+  // true를 만족하는 모든 데이터를 배열로 만들어 반환한다.
+  result = numArray.filter(x => x % 2 === 0);
+  console.log(result, typeof result)
+</script>
