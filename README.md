@@ -609,6 +609,7 @@ window.onload = () => document.getElementById("xvalue").value = 10000;
 <br><br>
 
 ## filter + 콜백 함수
+  ```
   let arr = [3, 2, 1, 4, 7, 8, 9, 11, 12, 19, 16];
 
   function odd(x) { return x % 2 === 1; }
@@ -618,6 +619,7 @@ window.onload = () => document.getElementById("xvalue").value = 10000;
   console.log(arr.filter( function (x) { return x % 2 === 1}));
   console.log(arr.filter( x => { return x % 2 === 1} ));
   console.log(arr.filter( x => x % 2 === 1 ));
+  ```
 
 <br><br>
 
@@ -692,7 +694,99 @@ console.log(stuResult3);
 ```
 
 ## Promise
+
+###
+- resolve - then
+- reject - catch
+
 ### async와 await
 - function 앞에  async를 붙이면 해당 함수는 항상 프라미스를 반환한다.
 - 프라미스가 아닌 값을 반환하더라도 이행 상태의 프라미스로 감싸 이행된 프라미스가 반환되도록 한다.
 - 자바스크립트는 await 키워드를 만나면 프라미스가 처리(settled)될 때까지 기다린다.
+
+<br /><br /><br />
+
+-----
+-----
+-----
+
+<br /><br /><br />
+
+2022. 6. 20
+
+# Event
+- 이벤트란 브라우저에서 일어나는 모든 동작들을 말한다.
+- 버튼 클릭, 키보드 입력, 마우스 클릭, 화면 드래그 동작 등이 이벤트이다. 
+
+## Event handler
+- 각 이벤트마다 기본 처리 동작이 이미 정의되어 있는데 이를 가로채 다른 동작을 부여할 수 있다.
+- 사용자는 함수를 만들어서 각 이벤트를 별도로 처리할 수 있다.
+
+<br /><br /><br />
+
+-----
+-----
+-----
+
+<br /><br /><br />
+
+2022. 6. 20
+
+# 크로스 브라우징
+- 최대한 많은 종류의 웹 브라우저에서 정상적으로 작동하는 웹페이지를 만드는 방법론 중 하나
+- 웹 페이지 제작 시에 모든 브라우저에서 깨지지 않고 의도한 대로 올바르게(호환성) 나오게 하는 작업
+
+# JQuery
+- 모든 브라우저에서 동작하는 클라이언트 자바스크립트 라이브러리
+
+## JQuery 배경
+- 고객이 사용하는 브라우저마다 다른 코드를 작성해야 했는데 JQuery는 표준화되어 사용자가 대거 유입되었음
+
+## 제작 목표
+- DOM과 관련된 처리 쉽게 구현
+- 일관된 이벤트 연결 쉽게 구현
+- 시각적 효과 쉽게 구현
+- Ajax 애플리케이션 쉽게 개발
+
+## 장점
+- 복잡한 자바스크립트 문법을 간소화
+- 크로스 브라우징
+- 다양한 오픈소스 라이브러리
+
+## $()
+- 선택자
+```
+$("p").click(function() {
+  ...
+})
+```
+- 메소드 정의 : html 로드가 완료되면 실행되는 메소드 정의
+```
+$(function() {
+  ...
+})
+```
+
+## button과 input:button
+- button : 텍스트 뿐만 아니라 이미지 등을 자식 요소로 포함할 수 있고, submit 기능이 있기 때문에 submit을 원하지 않으면 type="button"으로 지정해주면 된다.
+- input type="button" : <button>에 비해서 디자인에 제약이 있다.
+
+<br /><br /><br />
+
+# Spring
+
+## 루프백 주소 : 자신의 컴퓨터 아이피(localhost, 127.0.0.1)
+- cmd : ipconfig - ifconfig
+- http://127.0.0.1:8080/myhome1/
+- http://localhost:8080/myhome1/
+
+## 아이피 : 컴퓨터를 찾아가기 위한 값
+    1byte.1byte.1byte.1byte - 총 4byte => 표준 8byte
+    0~255,0~255,0~255,0~255
+
+## 포트 : 프로세스 식별값이라고 부르기도 한다.
+## 소켓 : 소켓의 식별값 (OSI 7계층의 Transport 계층)
+
+- 1 ~ 65535 : 2byte 정수 범위 1000 이하의 값은 알려진 포트번호이기 때문에 사용 불가
+- http : 80, ftp : 21, telnet : 23
+- oracle : 1521, mssql : 1433, mysql : 3306

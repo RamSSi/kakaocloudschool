@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button type="button" style="background-color: rgb(242, 142, 142);"
+    onclick="changeColor(this)">배경색 바꾸기</button> <br />
+  <button type="button" style="background-color: rgb(254, 241, 126);"
+    onclick="changeColor(this)">배경색 바꾸기</button> <br />
+  <button type="button" style="background-color: rgb(149, 251, 131);"
+    onclick="changeColor(this)">배경색 바꾸기</button> <br />
+  <button type="button" style="background-color: rgb(127, 193, 255);"
+    onclick="changeColor(this)">배경색 바꾸기</button> <br />
+  <button type="button" style="background-color: rgb(140, 138, 255);"
+    onclick="changeColor(this)">배경색 바꾸기</button> <br />
+  <button type="button" style="background-color: rgb(229, 136, 255);"
+    onclick="changeColor(this)">배경색 바꾸기</button> <br />
+
+</body>
+</html>
+
+<script>
+  // this로 자신(요소)에 대한 정보를 매개변수로 보낼 수 있음
+  function changeColor(btn) {
+    document.getElementsByTagName("body")[0].style.backgroundColor = btn.style.backgroundColor;
+  }
+</script>

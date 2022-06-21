@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event 2</title>
+    <!-- JQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <p>마우스를 움직여보세요.</p>
+    <input type="text" id="userid" /> <br />
+    <input type="text" id="password" /> <br />
+  </body>
+</html>
+
+<script>
+  $(() => {
+    // $("p").mouseenter(function() {
+    //   console.log("mouse enter");
+    //   $(this).css("background-color", "#ff0000");
+    // });
+    // $("p").mouseleave(function() {
+    //   console.log("mouse leave");
+    //   $(this).css("background-color", "#00ff00");
+    // });
+
+    $("p").hover(
+      () => {
+        $("p").css("background-color", "#ffff00");
+        // 마우스가 요소 위에 위치할 때
+      },
+      () => {
+        $("p").css("background-color", "#00ffff");
+        // 마우스가 요수 위에 있지 않을 때
+      }
+    );
+
+    // input 요소가 선택되었을 때
+    $("input").focus(function() {
+      $(this).css("background-color", "#ccc");
+    });
+
+    // input 요소의 focus가 사라질 때
+    $("input").blur(function() {
+      $(this).css("background-color", "#fff");
+    });
+  });
+</script>

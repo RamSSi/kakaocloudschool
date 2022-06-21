@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      td {
+        border: 1px solid #000;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" id="insert">추가</button>
+    <button type="button" id="remove">삭제</button>
+
+    <table style="width: 70%">
+      <thead>
+        <tr>
+          <th>품목</th>
+          <th>수량</th>
+          <th>단가</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </body>
+</html>
+
+<script>    
+  let tbody = document.getElementById("tbody");
+  
+  function insertCell() {
+    // 1. 테이블 또는 tbody 등에 대한 객체 참조를 가져온다.
+    if (tbody.children.length === 10)
+      return;
+    // 2. 새로운 행을 생성한다.
+    let row = tbody.insertRow(tbody.rows.length);
+    // 테이블의 맨 마지막에 행 추가
+
+    // 3. 행에 추가할 셀(td)을 생성한다.
+    let cell1 = row.insertCell(0);
+    let cell2 = row.insertCell(1);
+    let cell3 = row.insertCell(2);
+
+    cell1.innerHTML = " ";
+    cell2.innerHTML = " ";
+    cell3.innerHTML = " ";
+  }
+
+  function removeCell() {
+    let trs = tbody.children
+    if (trs.length === 0) return;
+    tbody.deleteRow(tbody.lastChild);
+  }
+
+  document.getElementById("insert").addEventListener("click", insertCell);
+  document.getElementById("remove").addEventListener("click", removeCell);
+</script>

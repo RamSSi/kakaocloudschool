@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="clock"></h1>
+    <button id="btnStart">시작</button>
+    <button id="btnEnd">종료</button>
+  </body>
+</html>
+
+<script>
+  let timerID = null;
+
+  window.onload = function () {
+    displayClock(); // 가장 처음 시계를 출력해주는 함수
+    document.getElementById("btnStart").addEventListener("click", () => {
+      if (timerID === null) timerID = setInterval(displayClock, 1000); // 반복을 멈추기 위한 interval 반환값 받기
+      // 만들어진 Interval 객체 참조를 반환한다.
+    });
+    document.getElementById("btnEnd").addEventListener("click", () => {
+      if (timerID !== null) {
+        clearInterval(timerID);
+        timerID = null;
+      }
+    });
+  };
+
+  function displayClock() {
+    let now = new Date();
+    document.getElementById("clock").innerHTML = now.toLocaleTimeString();
+  }
+</script>

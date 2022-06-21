@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Effect 4</title>
+
+    <!-- JQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      div {
+        background-color: rgb(246, 202, 202);
+        height: 100px;
+        width: 100px;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btnAnimate1" type="button">애니메이션 시작</button>
+    <p></p>
+    <div id="animate1"></div>
+
+    <button id="btnAnimate2" type="button">원래대로 돌아가기</button>
+    <p></p>
+    <div id="animate2"></div>
+  </body>
+</html>
+
+<script>
+  $(function () {
+    $("#btnAnimate1").click(function () {
+      $("#animate1").animate({
+          left: "+=250px",
+          height: "+=150px",
+          width: "+=150px",
+        },
+        function () {
+          // alert("완료")
+        });
+    });
+
+    $("#btnAnimate2").click(function() {
+      $("#animate2").animate({
+        height: "toggle"
+      })
+    })
+  });
+
+</script>

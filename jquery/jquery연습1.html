@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./file/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <p>111111</p>
+  <p>222222</p>
+  <p>333333</p>
+</body>
+</html>
+
+<script>
+  // $(document).ready(function () {
+  //   alert("jquery를 배워봅시다. ");
+  // });
+
+  $(function() {
+    // alert("jquery를 배워봅시다. ");
+
+    $("p").click(function() {
+      $(this).hide();
+    });
+  });
+</script>

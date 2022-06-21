@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- JQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    x : <input type="text" name="" id="xvalue" /><br />
+    y : <input type="text" name="" id="yvalue" /><br />
+
+    <button type="button" id="btnAdd">Add</button>
+    <button type="button" id="btnSub">Sub</button>
+    <button type="button" id="btnMul">Mul</button>
+    <button type="button" id="btnDiv">Div</button>
+
+    <div id="result">값 : </div>
+  </body>
+</html>
+
+<script>
+  $(function() {
+    $("button").click(function() {
+      let result;
+      let xvalue = parseInt($("#xvalue").val());
+      let yvalue = parseInt($("#yvalue").val());
+      if (this.id === "btnAdd") result = xvalue + yvalue;
+      else if (this.id === "btnSub") result = xvalue - yvalue;
+      else if (this.id === "btnMul") result = xvalue * yvalue;
+      else if (this.id === "btnDiv") {
+        if (yvalue === 0) { 
+          $("#yvalue").focus();
+          return;
+        } 
+        result = xvalue / yvalue;
+      }
+      $("#result").html(`값 : ${result}`);
+    })
+  })
+</script>
