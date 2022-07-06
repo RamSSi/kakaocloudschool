@@ -244,30 +244,278 @@
 
 
 
-const person = {
-    age: 20
-};
-// person.name = '홍길동';
-Object.defineProperty(person, 'name', {
-    value: '홍길동',
-    writable: false,
-    enumerable: false,
-    configrable: true
-});
+// const person = {
+//     age: 20
+// };
+// // person.name = '홍길동';
+// Object.defineProperty(person, 'name', {
+//     value: '홍길동',
+//     writable: false,
+//     enumerable: false,
+//     configrable: true
+// });
 
-console.log(person);
-console.log(Object.getOwnPropertyDescriptor(person, 'name'));
-person.name = '아이유';
-console.log(person);    // { name: '홍길동' }
+// console.log(person);
+// console.log(Object.getOwnPropertyDescriptor(person, 'name'));
+// person.name = '아이유';
+// console.log(person);    // { name: '홍길동' }
 
-console.log(Object.keys(person));   // enumerable: false => key가 노출되지 않음
+// console.log(Object.keys(person));   // enumerable: false => key가 노출되지 않음
 
-for (let idx in person) {
-    console.log(idx);   // property key(=index)
-}
-// for (let value of person) {
-//     console.log(value);   // property value
+// for (let idx in person) {
+//     console.log(idx);   // property key(=index)
 // }
-for(let value of Object.values(person)) {
-    console.log(value);
+// // for (let value of person) {
+// //     console.log(value);   // property value
+// // }
+// for(let value of Object.values(person)) {
+//     console.log(value);
+// }
+
+
+
+// -------------------------------------------------------------
+// 220706
+// 'use strict';   // 유연성 저하, 정형성 상승 => JS 강점 훼손 but 안쓰면 에러 파악 불가
+
+// const person = {
+//     name: 'Lee',
+
+// };
+// // 객체의 확장이 가능한지 확인
+// console.log(Object.isExtensible(person));   // 확장이 가능한지 확인: true
+// person.age = 20;
+// console.log(person);
+
+// Object.preventExtensions(person);   // 확장 불가능
+// person.address = '서울';
+// console.log(person);    // { name: 'Lee', age: 20 } 
+// // address 추가 불가 but Error가 발생하지 않음
+
+// Object.seal(person);    // property 추가, 삭제 불가
+// delete person.name;
+// console.log(person);    // { name: 'Lee', age: 20 }
+
+// Object.freeze(person);
+// person.name = '아이유';
+// console.log(person);    // { name: 'Lee', age: 20 }
+
+
+
+// const person1 = new Object();
+// person1.name = 'person1';
+// console.dir(person1);
+// // 생성자 함수를 이용한 객체 생성
+// // => instance
+
+// const person2 = {};
+// person2.name = 'person2';
+// console.dir(person2);
+// // 객체 literal을 이용한 객체 생성
+
+// function Person() {
+//     // this
+//     // this라는 keyword는 생성자 함수일 경우도 있고
+//     // 일반 함수인 경우에도 있음
+//     // 생성자 함수에서의 this : 생성자 함수에 의해 만들어질 instance
+//     // 일반함수에서의 this : window
+//     console.log(this);  // Object [global] (node.js로 실행)
+// }
+
+// const person1 = Person();
+// console.log(person1);    // undefined : 함수의 반환값이 없기 때문에
+
+// const person2 = new Person();
+// console.log(person2);   // Person {} (= this)
+// // 생성자 함수는 return 구문을 사용하지 않는다. 자동으로 객체를 생성하고 this에 바인딩하여 반환
+
+// const person3 = {};
+// console.log(person3);   // {}
+
+
+
+// function Person(name) {
+//     this.name = name;
+//     this.getName = function() {
+//         return `내 이름은 ${this.name}`
+//     }
+// }
+
+// const person1 = new Person('아이유');
+// const person2 = new Person('김연아');
+
+// console.log(person1.getName());
+// console.log(person2.getName());
+
+
+
+// function foo() {
+//     this.address = "hh";
+//     this.age =  5;
+//     console.log(this);
+// };
+
+// foo.myName = '홍길동';
+// foo.getName = function() {
+//     console.log(this);
+// };
+
+// foo();  // 함수 호출
+// new foo();  // 생성자 함수 호출
+// foo.getName();  // 메서드 호출  => 함수 객체 출력
+
+
+
+// // 함수 선언문
+// function foo() {}
+
+// // 함수 표현식
+// var bar = function() {};
+
+// // 객체의 property인 일반 함수
+// const barx = {
+//     x: function() {}    // 객체의 property이면서 함수임
+// };
+
+// // foo 함수객체가 내부 메서드 [[constructor]]를 가지고 있음
+// new foo();
+// new bar();  
+// new barx.x();
+
+// //
+// const arrow = () => {};
+// new arrow();    // TypeError: arrow is not a constructor
+
+// const obj = {
+//     x() {
+
+//    }    // constructor가 없음
+// }
+
+
+
+// // 함수 선언
+// function add(x, y) {
+//     return x + y;
+// }
+
+// var inst = new add();
+// console.log(inst);  // add {}
+
+// function createUser(name, role) {
+//     return {name, role};
+// }
+
+// inst = new createUser();
+// console.log(inst);  // { name: undefined, role: undefined }
+
+// // 생성자 함수
+// function Circle(radius) {
+//     this.radius = radius;
+//     this.getDiameter = function() {
+//         return 2 * this.radius;
+//     }
+// }
+
+// const circle = Circle(5);   
+// // 일반함수에서의 this는 window(global)이기 때문에
+// // window.radius = 5
+
+// console.log(radius);    // 5
+// console.log(circle);    // undefined : 일반함수 circle의 return 값이 없기 때문
+
+
+
+// var obj = {
+//     name: '홍길동'
+// }
+// console.dir(obj);
+
+// function square(number) {
+//     return number* number;
+// }
+// console.dir(square);
+
+
+
+// function foo(f) {
+//     return f();
+// }
+
+// function bar() {
+//     return `caller: ${bar.caller}`; 
+//     // 함수 내부에서의 bar는 함수 이름이다. => 함수 bar의 caller
+// }
+
+// console.log(bar()); //caller: null
+// console.log(foo(bar));  // caller: function foo(f) {
+//                         //    return f();
+//                         // }
+
+
+// // 함수 선언문 : 생성자 함수로 사용
+// function Person(name) {
+//     // 생성자 함수로 만들어질 instance가 가지는 property를 설정
+//     this.name = name;
+// }
+
+// const person = new Person('홍길동');
+
+
+
+// // 생성자 함수
+// function Circle(radius) {
+//     this.radius = radius;
+//     this.getDiameter = function() {
+//         return 2 * radius;
+//     }
+// }
+
+// const circle1 = new Circle(5);
+// const circle2 = new Circle(10);
+
+// console.log(circle1.getDiameter === circle2.getDiameter);   
+// // false : 함수 객체가 두 개 만들어 짐 => 메모리 낭비
+
+
+
+
+// function Circle(radius) {
+//     this.radius = radius;
+//     Circle.prototype.getDiameter = function() {
+//         return 2 * this.radius;
+//     };
+
+//     Circle.prototype.name = '홍길동';
+// }
+// circle1 = new Circle(5);
+// circle2 = new Circle(10);
+// console.log(circle1.name, circle2.name);    // 홍길동 홍길동
+
+// console.log(circle1.getDiameter === circle2.getDiameter);   // true 
+// console.log(circle1.name, circle2.name);    // 홍길동 아이유
+// // => circle2.name = '아이유'; 는 property를 바꾸는 것이 아니라 새로운 property를 추가한 것이다.
+
+// Circle.prototype.name = '아이유';
+// console.log(circle1.name, circle2.name);    // 아이유 아이유
+
+// circle1.__proto__.name = '김가나';
+// console.log(circle1.name, circle2.name);    // 김가나 김가나
+
+// function Square(width) {
+//     this.width = width;
+// }
+
+// console.log(Square.prototype);
+// console.log(circle1.name);
+
+
+
+function foo(param1, ...args) {
+    console.log(arguments);
+    // [Arguments] { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5 }
+    console.log(args);
+    // [ 2, 3, 4, 5 ]
 }
+
+foo(1, 2, 3, 4, 5);
