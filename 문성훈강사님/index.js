@@ -511,11 +511,278 @@
 
 
 
-function foo(param1, ...args) {
-    console.log(arguments);
-    // [Arguments] { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5 }
-    console.log(args);
-    // [ 2, 3, 4, 5 ]
+// function foo(param1, ...args) {
+//     console.log(arguments);
+//     // [Arguments] { '0': 1, '1': 2, '2': 3, '3': 4, '4': 5 }
+//     console.log(args);
+//     // [ 2, 3, 4, 5 ]
+// }
+
+// foo(1, 2, 3, 4, 5);
+
+
+
+// function Person(name) {
+//     this.name = name;
+// }
+
+// const person = new Person('홍길동');
+// console.dir(Person);
+
+
+
+// const obj = {};
+// const parent = { x: 1 };
+
+// obj.__proto__ = parent; // obj는 parent를 상속받을 수 있음
+// console.log(obj.x); // 1
+
+
+
+// const obj = {};
+// console.log(obj.__proto__.constructor.name);    // Object
+
+
+
+// // 객체 생성 방법
+// // 객체를 생성할 때 객체의 상위 prototype 객체를 직접 지정 가능
+// const obj = Object.create(null);
+// console.log(obj.__proto__); // undefined
+
+// // 따라서 이 경우  Object 메서드 사용하는 것 권장
+// console.log(Object.getPrototypeOf(obj));    // null
+
+
+
+// 함수 표현식
+// var foo = function() {};
+// console.log(foo.__proto__ === Function.prototype);  // true
+// console.log(foo.prototype.__proto__ === Object.prototype);  // true
+// console.log(Object.prototype.__proto__);    // null
+// console.log(foo.constructor === Function);  // true
+
+
+
+// console.log(Object === window.Object);  // (브라우저에서) true
+// console.log(Object === global.Object);  // (node.js에서) true
+
+// console.log(Object.__proto__);  // ƒ () { [native code] }
+
+
+
+function Person(name='default') {
+    this.name = name;
 }
 
-foo(1, 2, 3, 4, 5);
+// Person.prototype.sayHello = function() {
+//     console.log(`안녕하세요. ${this.name}`);
+// };  // 프로토타입 메서드 (생성자 함수 객체의 프로토타입의 property로 붙는 메서드)
+// // 인스턴스 메서드 : 생성자 함수 내에 property로 만들어지는 메서드
+
+// const me = new Person('홍길동');
+// me.sayHello();  // 안녕하세요. 홍길동 (prototype property 메서드를 호출)
+
+// me.sayHello = function() {
+//     console.log(`Hello ${this.name}`);
+// };  // 오버라이딩 : 상속받은 메서드를 재정의
+// // 만약 overriding이 발생하면 발생된 overriding에 의해 
+// // 숨겨진 prototype method를 property shadowing이 발생했다고 한다
+// me.sayHello();
+
+// Person.sayHello();
+
+// Person.prototype = {
+//     // constructor: Person,    // 직접 constructor를 연결 가능
+//     sayHello() {
+//         console.log('안녕하세요!');
+//     }
+// };
+
+// const me = new Person('홍길동');
+
+// const parent = {
+//     sayHello() {
+//         console.log('안녕하세요!');
+//     }
+// };
+
+// Object.setPrototypeOf(me, parent);    // prototype 객체를 변경할 수 있는 메서드
+// // me의 prototype 객체를 parent로 설정
+// console.log(me.__proto__.constructor === Person.prototype); // false
+
+
+// function Person(name) {
+//     this.name = name;
+//     // instance 메서드
+//     this.callme = function() {
+
+//     }
+// }
+
+// // prototype method
+// Person.prototype.sayHello = function() {
+//     console.log('안녕');
+// };
+
+// // static method : Person의 property가 됨 (메서드)
+// Person.staticMethod = function() {
+//     console.log('하이하이');
+// };
+
+// const me = new Person('하이');
+
+
+// x = 0;
+// function foo() {
+//     x = 10; // ReferenceError가 발생해야 상식과 부합!
+// }   // 묵시적(암묵적) 전역, implicit global => 전역변수화!
+
+// foo();
+// console.log(x); // 10
+
+
+
+// (function() {
+//     // non-strict mode
+//     var let = 10;
+
+//     // inner function, nested function
+//     function foo() {
+//         'use strict';
+//         let = 20;
+//     }
+// }());
+
+
+// 'use strict';
+
+// var obj = {};
+// delete obj;
+
+// console.log(obj);
+
+
+
+// var obj = new Object();
+// var str = 'Hello';  // primitive value
+//                     // data type : string
+
+// str.toUpperCase();  // wrapper 객체 생성, 소멸
+// str.toLowerCase();  // wrapper 객체 생성, 소멸
+// // 객체의 생성과 소멸이 반복되기 때문에 literal
+
+// var strObj = new String('홍길동');
+// 'Hello'.toUpperCase();  // primitive value에 메서드 호출 (원래는 에러)
+// // 그러나 JS 엔진은 wrapper 객체(new String('Hello'))를 묵시적으로 만든다.
+// // wrapper 객체(유사 배열 객체)는 String().prototype의 상속을 받기 때문에
+// // String.prototype의 메서드를 사용할 수 있다.
+// // 근데 String.prototype의 [[Prototype]]은 Object.prototype임
+
+// // console.log(typeof strObj); // object
+// console.dir(strObj);    // 유사 배열 객체 (wrapper 객체)
+
+
+
+// 필기 14
+// const x = 1;
+
+// function foo() {
+//     const y = 2;
+//     function bar() {
+//         const z = 3;
+//         console.log(x + y + z);
+//     }
+//     bar();
+// }
+// foo();
+
+
+
+// // 클로저 예시
+
+// const x = 1;
+
+// function outer() {
+//     const x = 10;
+
+//     const inner = function() {
+//         console.log(x);
+//     }
+//     return inner;
+// }
+
+// const innerFunc = outer();
+// innerFunc();
+
+// // innerFunc()가 호출되면 outer()가 호출되는데 inner가 return되면 지역변수 x=10, inner 함수는 사라져야 한다.
+// // 그러나 지역변수가 사라지지 않고 남아있어 innerFunc를 실행하면 10이 출력된다.
+// // 가비지컬렉터 : 메모리를 효율적으로 사용하기 위해 어떤 데이터를 아무도 참조하지 않으면 이 데이터를 삭제한다.
+// // inner 함수에서 x를 호출하면 이 x는 상위에 존재하는 (lexical) x의 value인 10을 출력하는데,
+// // inner 함수가 return 되어 innerFunc가 inner 함수를 참조하게 된다.
+// // 따라서 x와 inner의 참조가 아직 남아있기 때문에 가비지 컬렉션이 수행되지 않고 함수의 실행 컨텍스트가 종료되어도 
+// // 데이터가 삭제되지 않음
+
+
+
+// function foo() {
+//     const x = 1;
+//     const y = 2;
+//     function bar() {    // 외부 함수의 식별자를 참조하지 않은 상태(3)
+//         const z = 3;
+//         console.log(z);
+//     }
+//     return bar;
+// }
+// const bar = foo();  // 중첩함수가 외부함수의 결과값으로 return되고 있지만 클로저는 아님
+// bar();
+
+
+// function foo() {    // 중첩함수가 return 되지 않고(2), 생명 주기가 외부 함수보다 짧다(4).
+//     const x = 1;
+//     const y = 2;
+
+//     function bar() {
+//         console.log(x);
+//     }
+//     bar();
+// }
+
+// foo();
+
+
+// closure로 private 변수를 만드는 방법
+// const increase = function() {
+//     let num = 0;
+//     return ++num;
+// }
+// console.log(increase());
+// console.log(increase());
+// console.log(increase());
+
+// const increase = (function() {
+//     let num = 0;
+//     return function() {
+//         return ++num;
+//     }
+// }());
+// console.log(increase());
+// console.log(increase());
+// console.log(increase());
+
+// const counter = (function() {
+//     let num = 0;
+//     return {    // 함수가 포함된 것을 return하면 클로저 생성 가능
+//         increase() {    // 메서드1
+//             return ++num;
+//         },
+//         decrease() {    // 메서드2
+//             return --num;
+//         }
+//     };
+// }());
+
+// console.log(counter.increase());    // 1
+// console.log(counter.increase());    // 2
+// console.log(counter.increase());    // 3
+// console.log(counter.decrease());    // 2
+// console.log(counter.decrease());    // 1
