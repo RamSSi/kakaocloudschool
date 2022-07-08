@@ -570,9 +570,9 @@
 
 
 
-function Person(name='default') {
-    this.name = name;
-}
+// function Person(name='default') {
+//     this.name = name;
+// }
 
 // Person.prototype.sayHello = function() {
 //     console.log(`안녕하세요. ${this.name}`);
@@ -786,3 +786,172 @@ function Person(name='default') {
 // console.log(counter.increase());    // 3
 // console.log(counter.decrease());    // 2
 // console.log(counter.decrease());    // 1
+
+
+
+// // class define
+// class Person {
+
+// }
+
+// // class는 일급객체이기 때문에 변수에 assign할 수 있다.
+// // like annonymous function
+
+// // 익명 class 표현식
+// const Person = class {};
+
+// // 기명 class 표현식
+// const Person2 = class MyClass {};
+
+
+//5
+// class Person {
+//     // constructor, 생성자
+//     constructor(name) {
+//         // instance의 초기화
+//         // instance의 property를 설정
+//         this.name = name;   
+//         // 생성자가 실행되면 만들어질 instance의 property에 name을 추가하여 값을 넣어준다.
+//     }
+//     // prototype method : prototype 객체가 가지고 있는 method
+//     // instance에 상속되는 method
+//     protoMtd() {
+//         console.log('prototype method');
+//     }
+
+//     // static method
+//     static staticMtd() {
+//         console.log('static method');
+//     }
+// }
+
+// const me = new Person('홍길동');
+// console.log(me);
+
+
+//3
+// const Person = '안녕하세요';
+
+// {
+//     console.log(Person);
+//     class Person {}
+//}
+
+
+
+// class Person {
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+
+// const me = new Person('홍길동');
+// console.dir(me);
+// console.dir(Person);
+
+
+
+// // 객체 literal을 이용해 객체 생성
+// class Person {
+//     constructor(firstName, lastName) {
+//         this.firstName = firstName;
+//         this.lastName = lastName;
+//     }
+//     get fullName() {    // 접근자 property (get 키워드, 축약형, return 필요)
+//         return `${this.lastName}${this.firstName}`
+//     }
+//     set fullName(name) {
+//         // 유효성 검사
+//         [this.lastName, this.firstName] = name.split(' ');
+//     }
+// };
+
+// const me = new Person('길동', '홍');
+// console.log(me.fullName);   // 홍길동
+// me.fullName = '김 연아';
+// console.log(me.fullName);   // 김연아
+
+
+
+// // 상위 클래스
+// class foo {
+
+// }
+
+// // 하위 클래스
+// class bar extends foo {
+
+// }
+
+// const obj = new bar();
+
+
+
+// // super class
+// class Animal {
+//     constructor(age, weight) {
+//         this.age = age;
+//         this.weight = weight;
+//     }
+
+//     eat() {
+//         return 'eat';
+//     }
+
+//     move() {
+//         return 'move';
+//     }
+// }
+
+// class Bird extends Animal {
+//     constructor(age, weight, kk) {
+//         // 상위 클래스의 cocnstructor 호출
+//         super(age, weight); 
+//         this.kk = kk;
+//     }
+//     fly() {
+//         return 'fly';
+//     }
+// }
+
+// const bird = new Bird(10, 30, 100);
+// console.log(bird);
+// console.log(bird instanceof Bird);  // true
+// console.log(bird instanceof Animal);    // true
+// console.log(bird.eat());
+
+
+
+// function Base1(name) {
+//     this.name = name;
+// }
+
+// class Base2 {
+
+// }
+
+// let tmp = true;
+// class Derived extends (tmp ? Base1 : Base2) {
+
+// }
+
+
+
+class Base {
+    constructor(name) {
+        this.name = name;
+    }
+    sayHello() {    // shadowing
+        return '안녕 ';
+    }
+}
+
+class Derived extends Base {
+    sayHello() {    // overriding
+        // return 'Hello';
+        return super.sayHello() + this.name;    // shadowing된 메서드를 사용 가능하다.
+    }
+}
+
+const derived = new Derived('홍길동');
+console.log(derived.sayHello());
