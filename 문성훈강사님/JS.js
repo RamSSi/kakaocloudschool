@@ -937,21 +937,21 @@
 
 
 
-class Base {
-    constructor(name) {
-        this.name = name;
-    }
-    sayHello() {    // shadowing
-        return '안녕 ';
-    }
-}
+// class Base {
+//     constructor(name) {
+//         this.name = name;
+//     }
+//     sayHello() {    // shadowing
+//         return '안녕 ';
+//     }
+// }
 
-class Derived extends Base {
-    sayHello() {    // overriding
-        // return 'Hello';
-        return super.sayHello() + this.name;    // shadowing된 메서드를 사용 가능하다.
-    }
-}
+// class Derived extends Base {
+//     sayHello() {    // overriding
+//         // return 'Hello';
+//         return super.sayHello() + this.name;    // shadowing된 메서드를 사용 가능하다.
+//     }
+// }
 
-const derived = new Derived('홍길동');
-console.log(derived.sayHello());
+// const derived = new Derived('홍길동');
+// console.log(derived.sayHello());
