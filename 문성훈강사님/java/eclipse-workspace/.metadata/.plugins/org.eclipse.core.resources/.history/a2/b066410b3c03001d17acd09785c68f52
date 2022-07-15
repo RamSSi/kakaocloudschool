@@ -1,0 +1,36 @@
+package lecture0714;
+
+import javax.swing.JOptionPane;
+
+class ThreadExam04_1 extends Thread {
+	@Override
+	public void run() {
+		int i = 10;
+		while(i != 0 && !isInterrupted()) {	// interrupt로 프로그램을 제어
+			// i가 0이 아니고 interrupt가 걸려있지 않으면
+			System.out.println(--i);
+			
+			for(long k = 0; k < 750000000000000000L; k++);
+			
+		}
+		System.out.println("카운트 종료");
+	}
+}
+
+public class ThreadExam04 {
+	public static void main(String[] args) {
+		Thread t = new ThreadExam04_1();
+		
+		t.start();
+		
+		String input = JOptionPane.showInputDialog("값을 입력하세요.");	// 창이 뜨면 main Thread가 blocking
+	
+		System.out.println("입력값 : " + input);
+		
+
+		t.interrupt();	
+		// Thread t의 내부 상태정보를 변경함 (interrupted = true;)
+		System.out.println("Thread 상태값 : " + t.isInterrupted());
+	
+	}	
+}

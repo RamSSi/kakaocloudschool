@@ -1,0 +1,17 @@
+package lecture0715;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ObjectStreamTest {
+
+	public static void main(String[] args) {
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("1", "홍길동");
+		map.put("2", "아이유");
+		map.put("3", "김연아");
+
+	}
+
+}

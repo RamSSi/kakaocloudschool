@@ -1,0 +1,38 @@
+package lecture0715;
+
+//notepad 만들기
+//JavaFX를 이용
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+
+public class MyNotepad extends Application {
+
+	TextArea textarea;
+	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// 화면을 구성하는 전체 panel
+		BorderPane root = new BorderPane();	// 5개의 layout이 나누어져 있는 panel
+		// BorderPane의 크기 (width, height)
+		root.setPrefSize(700, 500);
+		
+		// TextArea 생성
+		textarea = new TextArea();
+		root.setCenter(textarea);
+		
+		// Scene 객체 생성
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("메모장");
+		primaryStage.show();
+	}
+	
+	public static void main(String[] args) {
+		launch();	// start() 호출 -> 내부적으로 Thread가 생성되면서 창이 나타남 창의 모든 설정은 start에서 한다.
+		// 
+	}
+}

@@ -1,0 +1,25 @@
+package lecture0714;
+
+public class ThreadExam02 implements Runnable {
+	static boolean autoSave = false;
+	
+	public static void main(String[] args) {
+		Thread t = new Thread(new ThreadExam02());
+	}
+	
+	@Override
+	public void run() {
+		while(true) {
+			
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				
+			}
+			
+			if(autoSave) {
+				System.out.println("자동저장 완료");
+			}
+		}
+	}
+}

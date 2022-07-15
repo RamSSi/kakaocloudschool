@@ -1,0 +1,11 @@
+package lecture0714;
+
+class ThreadExam04_1 extends Thread {
+	
+}
+
+public class ThreadExam04 {
+	Thread t = new ThreadExam04_1();
+	
+	t.start();
+}
