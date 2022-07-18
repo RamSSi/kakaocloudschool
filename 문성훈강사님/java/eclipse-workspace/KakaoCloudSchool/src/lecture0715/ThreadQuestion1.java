@@ -8,9 +8,8 @@ class Thread_instance implements Runnable {
 		try {
 			notify();
 			wait();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			
 		}
 	}
 	
