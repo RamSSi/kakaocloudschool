@@ -18,12 +18,3 @@ class CThread implements Runnable {
 		c.launch();
 	}
 }
-
-public class Exam03_CSocket {
-	cThread r = new cThread();
-	Thread t1 = new Thread(r, "Thread t1");
-	Thread t2 = new Thread(r, "Thread t2");
-	
-	t1.start();
-	t2.start();
-}
