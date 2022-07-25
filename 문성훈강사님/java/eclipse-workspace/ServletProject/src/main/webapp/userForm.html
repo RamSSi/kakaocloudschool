@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>Form 태그</div>
+	
+	<!-- action: 입력된 내용과 함께 요청을 보낼 Server Program에 대한 URL -->
+	<!-- method: 생략 가능, 생략된 경우 "GET"
+	             클라이언트가 서버에 Request를 보내는 방법 지정
+	             6개의 method 존재, 4개만 사용하는데 일반적으로는 2개 사용
+	             "GET", "POST", "PUT", "DELETE -->
+	             
+	             
+	<form action="index.html" method="GET">
+		ID : <input type="text" name="userID" /><br/>
+		PW : <input type="password" name="userPW" /><br/>
+		<input type="submit" value="서버로 데이터 전송" />
+	</form>
+	
+</body>
+</html>
