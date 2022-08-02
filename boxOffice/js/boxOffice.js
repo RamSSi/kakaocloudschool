@@ -80,7 +80,8 @@ function getData() {
 					});
 					let actorTd = $("<td></td>").text(actorNm);
 					tr.append(actorTd);
-					let deleteTd = $("<td></td>");
+					let deleteTd = $("<td><button type='button' class='deleteBtn'>삭제</button></td>");
+
 					tr.append(deleteTd);
 					$("tbody").append(tr);
 				}
@@ -90,7 +91,14 @@ function getData() {
 				alert("에러 발생");
 			}
 		});
-		
-		
+		$(document).on("click", ".deleteBtn", function(e) {
+			$(this).parent().parent().remove();
+		})
 	});
 }
+
+// $(".deleteBtn").each((idx, item) => {
+// 	item.on("click", function(e) {
+// 		console.log(e);
+// })})
+
